@@ -1,0 +1,100 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+        <meta charset="UTF-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <title>Team Profile</title>
+        <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.0/css/bootstrap.min.css">
+        <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+        <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.16.0/umd/popper.min.js"></script>
+        <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.0/js/bootstrap.min.js"></script>
+        <style>
+                .team-photo { width: 180px; height: 180px; object-fit: cover; }
+                .status-dot { width: 12px; height: 12px; display: inline-block; border-radius: 50%; margin-right: 8px; }
+        </style>
+</head>
+<body class="bg-light">
+    <main class="container py-5">
+        <section class="text-center mb-4">
+            <h1 class="display-6">Techy Enterprises</h1>
+            <p class="text-muted mb-1">Building better products, together</p>
+            <blockquote class="blockquote">
+                <p class="mb-0">Alone we can do so little; together we can do so much.</p>
+                <footer class="blockquote-footer">Helen Keller</footer>
+            </blockquote>
+        </section>
+
+        <div class="row justify-content-center">
+            <div class="col-lg-8">
+                <div class="card shadow-sm mb-4">
+                    <div class="card-body">
+                        <div class="row align-items-center">
+                            <div class="col-md-5 text-center mb-3 mb-md-0">
+                                <img src="https://imgs.search.brave.com/3BvZrdI__Kxrq4gcBC_uenKTIPcUm9Ay8vK3_Gl5NzQ/rs:fit:860:0:0:0/g:ce/aHR0cHM6Ly9tZWRp/YS5nZXR0eWltYWdl/cy5jb20vaWQvMTI3/Nzg1OTI4OS9waG90/by9idXNpbmVzcy10/ZWFtLXBvcnRyYWl0/LmpwZz9zPTYxMng2/MTImdz0wJms9MjAm/Yz1PY0RwOXBIc0tz/RDhVTTJaOV9KcTFs/R2xqeWpncFptc29G/ZHZCNVJSV1VzPQ" class="rounded-circle team-photo mx-auto d-block">
+                            </div>
+                            <div class="col-md-7">
+                                <h5 class="card-title">Our Values</h5>
+                                <ul class="list-unstyled">
+                                    <li class="mb-1">• Integrity  </li>
+                                    <li class="mb-1">• Collaboration </li>
+                                    <li class="mb-1">• Excellence </li>
+                                </ul>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <div id="statusAlert" class="alert alert-warning d-none" role="alert">
+                    Some Members are not Active !
+                </div>
+
+                <div class="card shadow-sm">
+                    <div class="card-body">
+                        <h5 class="card-title">Team Members</h5>
+                        <div class="table-responsive">
+                            <table class="table table-hover align-middle">
+                                <thead>
+                                    <tr>
+                                        <th>Name</th>
+                                        <th>Role</th>
+                                        <th>Status</th>
+                                    </tr>
+                                </thead>
+                                <tbody>
+                                    <tr data-status="Active">
+                                        <td>Vishal Krishna</td>
+                                        <td>Project Manager</td>
+                                        <td><span class="status-dot bg-success"></span><span class="badge bg-success">Active</span></td>
+                                    </tr>
+                                    <tr data-status="On Leave">
+                                        <td>Rahul menon</td>
+                                        <td>Senior Developer</td>
+                                        <td><span class="status-dot bg-warning"></span><span class="badge bg-warning text-dark">On Leave</span></td>
+                                    </tr>
+                                    <tr data-status="Resigned">
+                                        <td>Karthik Krishna</td>
+                                        <td>UI/UX Designer</td>
+                                        <td><span class="status-dot bg-danger"></span><span class="badge bg-danger">Resigned</span></td>
+                                    </tr>
+                                </tbody>
+                            </table>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </main>
+
+    <script>
+        (function(){
+            const rows = document.querySelectorAll('tbody tr');
+            let anyNotActive = false;
+            rows.forEach(r => {
+                if ((r.getAttribute('data-status') || '').trim() !== 'Active') anyNotActive = true;
+            });
+            if (anyNotActive) document.getElementById('statusAlert').classList.remove('d-none');
+        })();
+    </script>
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/js/bootstrap.bundle.min.js"></script>
+</body>
+</html>
